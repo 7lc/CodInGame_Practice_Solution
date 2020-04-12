@@ -1,3 +1,6 @@
+// Puzzle Solved by Longchang Cui
+// 04-11-2020
+
 using System;
 using System.Linq;
 using System.IO;
@@ -51,31 +54,38 @@ class Solution
             {'z',26},
         };
         
+        // Convert string to character array
         char[] char_arr = T.ToLower().ToCharArray();
+        // Index for alphabet and question mark
         int idx = 0;
         
         for (int i = 0; i < H; i++)
         {
+            // Read ASCII art input
             string ROW = Console.ReadLine();
+            
+            // Convert ASCII string to character array
             char[] char_row = ROW.ToCharArray();
             
             // Print each character line
             for(int j = 0; j < char_arr.Length;j++)
             {
-                // if character is in dictionary ([a-z],[A-Z])
+                // if the input character is in dictionary ([a-z],[A-Z])
+                //, assign the location to idx variable and multiply the Width of the Row ASCII input
                 if(dict.ContainsKey(char_arr[j]) == true)
                     idx = dict[char_arr[j]] * L;
                 
-                // else print the question mark
+                // else assign the question mark index to idx
                 else
                     idx = 27 * L;
-                    
+                
+                // Print the ASCII alphabet row
                 for(int k = L; k >= 1; k--)
                 {
                    Console.Write(char_row[idx-k]);
                 }
             }
-            
+            // Print next line
             Console.Write("\n");
         }
 
